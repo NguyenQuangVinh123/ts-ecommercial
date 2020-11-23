@@ -1,12 +1,13 @@
-import React,{Suspense,lazy} from "react";
+import React,{Suspense,lazy, FC} from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { GlobalStyle } from "./global.styles";
 import Header from "./components/header/header";
 import { Switch, Route, Redirect } from "react-router-dom";
 const HomePage = lazy(() => import('./pages/homepage/homepage'))
+const ShopPage = lazy(() => import("./pages/shop/shop"));
 
-function App() {
+const App:FC = () =>  {
   return (
     <div>
       <GlobalStyle />
@@ -14,8 +15,8 @@ function App() {
       <Switch>
         <Suspense fallback={<div>...Loading</div>}>
           <Route exact path="/" component={HomePage} />
-          {/* <Route path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route path="/shop" component={ShopPage} />
+          {/* <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/signin"
